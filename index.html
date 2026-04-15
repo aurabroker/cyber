@@ -11,140 +11,146 @@
 </head>
 <body>
 
-<!-- SPLIT-FLAP CLOCK BAR -->
+<!-- CLOCK BAR -->
 <div id="clock-bar">
-  <div class="clock-bar-inner">
-    <div class="clock-city" id="clock-tok">
-      <div class="clock-city-name">TOKYO</div>
-      <div class="clock-city-code">TYO · JST</div>
-      <div class="clock-digits">
+  <div class="clock-inner">
+    <div class="clock-city">
+      <div class="city-name">TOKYO</div>
+      <div class="city-tz">TYO · JST</div>
+      <div class="flap-row">
         <div class="flap-pair"><div class="flap" id="tok-h0">0</div><div class="flap" id="tok-h1">9</div></div>
-        <div class="clock-sep">:</div>
+        <div class="fsep">:</div>
         <div class="flap-pair"><div class="flap" id="tok-m0">0</div><div class="flap" id="tok-m1">0</div></div>
       </div>
-      <div class="clock-date" id="tok-date"></div>
-      <div class="clock-threat" id="tok-alert"></div>
+      <div class="city-date" id="tok-date">—</div>
+      <div class="city-alert red" id="tok-alert">RANSOMWARE · AKTYWNY</div>
     </div>
-
-    <div class="clock-divider"></div>
-
-    <div class="clock-city" id="clock-lon">
-      <div class="clock-city-name">LONDON</div>
-      <div class="clock-city-code">LON · BST/GMT</div>
-      <div class="clock-digits">
+    <div class="clock-div"></div>
+    <div class="clock-city">
+      <div class="city-name">LONDON</div>
+      <div class="city-tz">LON · GMT/BST</div>
+      <div class="flap-row">
         <div class="flap-pair"><div class="flap" id="lon-h0">0</div><div class="flap" id="lon-h1">1</div></div>
-        <div class="clock-sep">:</div>
+        <div class="fsep">:</div>
         <div class="flap-pair"><div class="flap" id="lon-m0">0</div><div class="flap" id="lon-m1">0</div></div>
       </div>
-      <div class="clock-date" id="lon-date"></div>
-      <div class="clock-threat clock-threat--ok" id="lon-alert"></div>
+      <div class="city-date" id="lon-date">—</div>
+      <div class="city-alert blue" id="lon-alert">CFC · OCHRONA AKTYWNA</div>
     </div>
-
-    <div class="clock-divider"></div>
-
-    <div class="clock-city" id="clock-nyc">
-      <div class="clock-city-name">NEW YORK</div>
-      <div class="clock-city-code">NYC · EDT</div>
-      <div class="clock-digits">
-        <div class="flap-pair"><div class="flap" id="nyc-h0">2</div><div class="flap" id="nyc-h1">0</div></div>
-        <div class="clock-sep">:</div>
-        <div class="flap-pair"><div class="flap" id="nyc-m0">0</div><div class="flap" id="nyc-m1">0</div></div>
-      </div>
-      <div class="clock-date" id="nyc-date"></div>
-      <div class="clock-threat" id="nyc-alert"></div>
-    </div>
-
-    <div class="clock-divider"></div>
-
-    <div class="clock-city" id="clock-waw">
-      <div class="clock-city-name">WARSAW</div>
-      <div class="clock-city-code">WAW · CEST · HQ</div>
-      <div class="clock-digits">
+    <div class="clock-div"></div>
+    <div class="clock-city hq-city">
+      <div class="city-name">WARSAW <span class="hq-tag">HQ</span></div>
+      <div class="city-tz">WAW · CEST</div>
+      <div class="flap-row">
         <div class="flap-pair"><div class="flap hq" id="waw-h0">0</div><div class="flap hq" id="waw-h1">2</div></div>
-        <div class="clock-sep hq">:</div>
+        <div class="fsep hq">:</div>
         <div class="flap-pair"><div class="flap hq" id="waw-m0">0</div><div class="flap hq" id="waw-m1">0</div></div>
       </div>
-      <div class="clock-date" id="waw-date"></div>
-      <div class="clock-threat clock-threat--ok" id="waw-alert"></div>
+      <div class="city-date" id="waw-date">—</div>
+      <div class="city-alert blue" id="waw-alert">AURA SHIELD · ONLINE</div>
     </div>
-
-    <div class="clock-bar-right">
-      <div class="attack-counter-wrap">
-        <div class="attack-counter-label">ATAKI GLOBALNE · DZIŚ</div>
-        <div class="attack-counter-val" id="attack-main">0</div>
-        <div class="attack-counter-sub"><span class="pulse-dot"></span> NA ŻYWO</div>
+    <div class="clock-div"></div>
+    <div class="clock-city">
+      <div class="city-name">NEW YORK</div>
+      <div class="city-tz">NYC · EDT</div>
+      <div class="flap-row">
+        <div class="flap-pair"><div class="flap" id="nyc-h0">2</div><div class="flap" id="nyc-h1">0</div></div>
+        <div class="fsep">:</div>
+        <div class="flap-pair"><div class="flap" id="nyc-m0">0</div><div class="flap" id="nyc-m1">0</div></div>
       </div>
+      <div class="city-date" id="nyc-date">—</div>
+      <div class="city-alert red" id="nyc-alert">BEC FRAUD · ALERT</div>
+    </div>
+    <div class="clock-attack-wrap">
+      <div class="ca-label">ATAKI DZIŚ · GLOBALNIE</div>
+      <div class="ca-val" id="hero-counter">0</div>
+      <div class="ca-live"><span class="pulse-dot"></span> NA ŻYWO</div>
     </div>
   </div>
 </div>
 
-<!-- GRID CANVAS BG -->
-<canvas id="grid-canvas"></canvas>
-
 <!-- NAV -->
 <nav id="main-nav">
-  <div class="nav-logo">AURA<span>.</span>CYBER</div>
-  <div class="nav-badge">LLOYD'S OF LONDON · AUTHORIZED BROKER</div>
-  <button class="nav-cta" onclick="document.getElementById('cta-section').scrollIntoView({behavior:'smooth'})">Wycena polisy</button>
+  <div class="nav-logo">AURA<span class="dot">.</span>CYBER</div>
+  <div class="nav-links">
+    <a href="#coverage">Zakres ochrony</a>
+    <a href="#threat-map-section">Mapa zagrożeń</a>
+    <a href="#process-section">Jak działamy</a>
+  </div>
+  <button class="nav-cta" onclick="document.getElementById('cta-section').scrollIntoView({behavior:'smooth'})">Wycena polisy →</button>
 </nav>
 
-<!-- HERO -->
+<!-- HERO SPLIT -->
 <section id="hero">
-  <p class="eyebrow fade-up">UBEZPIECZENIE CYBER · AURA CONSULTING SP. Z O.O.</p>
-  <h1 class="hero-title">
-    <span class="fade-up d1">Twój biznes</span>
-    <span class="accent fade-up d2">jest atakowany.</span>
-    <span class="muted fade-up d3">Pytanie brzmi: kiedy?</span>
-  </h1>
-  <p class="hero-sub fade-up d4">
-    Polisa cyber to nie formalność — to jedyna sieć bezpieczeństwa, która działa wtedy, gdy wszystko inne zawodzi. Aura Consulting buduje programy ochrony szyte na miarę twojego ryzyka.
-  </p>
-  <div class="hero-actions fade-up d4">
-    <button class="btn-primary" onclick="document.getElementById('cta-section').scrollIntoView({behavior:'smooth'})">Zamów analizę ryzyka</button>
-    <button class="btn-ghost" onclick="document.getElementById('coverage').scrollIntoView({behavior:'smooth'})">Jak działa ochrona →</button>
+  <div class="hero-left">
+    <p class="eyebrow">UBEZPIECZENIE CYBER · AURA CONSULTING SP. Z O.O.</p>
+    <h1 class="hero-title">
+      <span class="ht-1">Twój biznes</span>
+      <span class="ht-2">jest atakowany.</span>
+      <span class="ht-3">Pytanie brzmi: kiedy?</span>
+    </h1>
+    <p class="hero-sub">Polisa cyber to nie formalność — to jedyna sieć bezpieczeństwa, która działa wtedy, gdy wszystko inne zawodzi. Aura Consulting buduje programy ochrony szyte na miarę twojego ryzyka.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('cta-section').scrollIntoView({behavior:'smooth'})">Zamów analizę ryzyka</button>
+      <button class="btn-ghost"   onclick="document.getElementById('coverage').scrollIntoView({behavior:'smooth'})">Jak działa ochrona →</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="terminal">
+      <div class="term-bar">
+        <div class="term-dots"><span class="td red"></span><span class="td amber"></span><span class="td green"></span></div>
+        <div class="term-title">bash — root@darknet-c2</div>
+        <div class="term-live">● LIVE</div>
+      </div>
+      <div class="term-body" id="term-body">
+        <div id="term-lines"></div>
+        <div class="term-input-row">
+          <span class="term-prompt">root@c2:~#&nbsp;</span><span id="term-typing"></span><span class="term-cursor">█</span>
+        </div>
+      </div>
+    </div>
+    <p class="term-caption"><span class="tc-dot"></span>Symulacja aktywnego ataku · dane CERT/CISA 2024</p>
   </div>
 </section>
 
 <!-- TICKER -->
-<div id="ticker-wrap">
-  <div class="ticker-inner" id="ticker"></div>
-</div>
+<div id="ticker-wrap"><div class="ticker-track" id="ticker"></div></div>
 
 <!-- THREAT MAP -->
 <section id="threat-map-section">
-  <div class="map-header">
+  <div class="section-hdr">
     <div>
-      <p class="section-label">GLOBAL THREAT MAP · LIVE</p>
-      <h2 class="map-title">Świat jest pod atakiem.<br>Twoja firma jest na mapie.</h2>
+      <p class="section-label">GLOBAL THREAT MAP · REAL-TIME SIMULATION</p>
+      <h2 class="section-title">Świat jest pod atakiem.<br>Twoja firma jest na tej mapie.</h2>
     </div>
     <div class="map-legend">
-      <div class="legend-item"><span class="leg-dot red"></span> Źródło ataku</div>
-      <div class="legend-item"><span class="leg-dot blue"></span> Cel chroniony</div>
-      <div class="legend-item"><span class="leg-dot amber"></span> Alert aktywny</div>
+      <div class="leg"><span class="ldot red"></span>Źródło ataku</div>
+      <div class="leg"><span class="ldot blue"></span>Cel chroniony</div>
+      <div class="leg"><span class="ldot amber"></span>Alert aktywny</div>
     </div>
   </div>
   <div class="map-body">
-    <div class="map-canvas-wrap">
+    <div class="map-wrap">
       <canvas id="threat-canvas"></canvas>
-      <div class="map-overlay-label top-left">AURA CONSULTING · THREAT INTELLIGENCE · REAL-TIME</div>
-      <div class="map-overlay-label bottom-right" id="map-clock"></div>
+      <div class="map-lbl tl">AURA CONSULTING · THREAT INTELLIGENCE</div>
+      <div class="map-lbl br" id="map-clock"></div>
     </div>
-    <div class="map-sidebar">
-      <div class="msb-block">
-        <div class="msb-label">STATYSTYKI SESJI</div>
+    <div class="map-sb">
+      <div class="msb-blk">
+        <div class="msb-lbl">STATYSTYKI SESJI</div>
         <div class="msb-stats">
-          <div class="msb-stat"><span class="msb-num red" id="ms-total">0</span><span class="msb-desc">Ataków wykrytych</span></div>
-          <div class="msb-stat"><span class="msb-num" id="ms-blocked">0</span><span class="msb-desc">Zablokowanych</span></div>
-          <div class="msb-stat"><span class="msb-num red" id="ms-active">0</span><span class="msb-desc">Aktywnych wektorów</span></div>
-          <div class="msb-stat"><span class="msb-num" id="ms-countries">41</span><span class="msb-desc">Krajów źródłowych</span></div>
+          <div class="msb-stat"><div class="msb-n red" id="ms-total">0</div><div class="msb-d">Ataków wykrytych</div></div>
+          <div class="msb-stat"><div class="msb-n blue" id="ms-blocked">0</div><div class="msb-d">Zablokowanych</div></div>
+          <div class="msb-stat"><div class="msb-n red" id="ms-active">0</div><div class="msb-d">Aktywnych wektorów</div></div>
+          <div class="msb-stat"><div class="msb-n blue">41</div><div class="msb-d">Krajów źródłowych</div></div>
         </div>
       </div>
-      <div class="msb-block" style="flex:1">
-        <div class="msb-label">LOG ATAKÓW · LIVE</div>
+      <div class="msb-blk msb-flex">
+        <div class="msb-lbl">LOG ATAKÓW · LIVE</div>
         <div id="attack-log"></div>
       </div>
-      <div class="msb-block">
-        <div class="msb-label">TYPY ZAGROŻEŃ</div>
+      <div class="msb-blk">
+        <div class="msb-lbl">TYPY ZAGROŻEŃ</div>
         <div id="type-bars"></div>
       </div>
     </div>
@@ -154,74 +160,41 @@
 <!-- STATS -->
 <section id="stats-section">
   <div class="stats-row">
-    <div class="stat-cell">
-      <div class="stat-num">4,4M</div>
-      <div class="stat-desc">USD — średni koszt naruszenia danych (IBM Cost of Data Breach 2024)</div>
-    </div>
-    <div class="stat-cell">
-      <div class="stat-num">72h</div>
-      <div class="stat-desc">Obowiązkowy czas zgłoszenia incydentu RODO do UODO od momentu wykrycia</div>
-    </div>
-    <div class="stat-cell">
-      <div class="stat-num">94%</div>
-      <div class="stat-desc">Polskich firm doświadczyło przynajmniej jednego incydentu cybernetycznego</div>
-    </div>
+    <div class="stat-cell"><div class="stat-n">4,4M</div><div class="stat-d">USD — średni koszt naruszenia danych<br><em>IBM Cost of Data Breach 2024</em></div></div>
+    <div class="stat-cell"><div class="stat-n">72h</div><div class="stat-d">Obowiązkowy czas zgłoszenia incydentu<br><em>RODO Art. 33 → UODO</em></div></div>
+    <div class="stat-cell"><div class="stat-n">94%</div><div class="stat-d">Polskich firm doświadczyło incydentu cyber<br><em>KPMG Barometr 2024</em></div></div>
   </div>
 </section>
 
 <!-- COVERAGE -->
 <section id="coverage" class="section">
   <p class="section-label">CO OBEJMUJE POLISA</p>
-  <h2 class="section-title">Pełna tarcza.<br>Jeden kontrakt.</h2>
+  <h2 class="section-title">Pełna tarcza. Jeden kontrakt.</h2>
   <div class="coverage-grid">
-    <div class="coverage-card">
-      <div class="cov-icon">&#9632;</div>
-      <div class="cov-name">Ransomware & Wymuszenia</div>
-      <div class="cov-text">Pokrycie okupu, koszty negocjatora kryzysowego, pełne przywrócenie systemów i danych po ataku szyfrującym.</div>
-    </div>
-    <div class="coverage-card">
-      <div class="cov-icon">&#9632;</div>
-      <div class="cov-name">Odpowiedzialność za Dane</div>
-      <div class="cov-text">Ochrona prawna i odszkodowawcza po wycieku danych osobowych klientów lub pracowników. RODO-ready.</div>
-    </div>
-    <div class="coverage-card">
-      <div class="cov-icon">&#9632;</div>
-      <div class="cov-name">Przerwa w Działalności</div>
-      <div class="cov-text">Utracony zysk i koszty stałe, gdy systemy nie działają — od pierwszej godziny przestoju.</div>
-    </div>
-    <div class="coverage-card">
-      <div class="cov-icon">&#9632;</div>
-      <div class="cov-name">Reagowanie na Incydent</div>
-      <div class="cov-text">24/7 dostęp do zespołu forensic, PR kryzysowy, obsługa prawna i powiadamianie ofiar wycieku.</div>
-    </div>
-    <div class="coverage-card">
-      <div class="cov-icon">&#9632;</div>
-      <div class="cov-name">Cyberprzestępczość Finansowa</div>
-      <div class="cov-text">Phishing CEO, przelewy na fałszywe rachunki, manipulacja fakturami — straty bezpośrednie pokryte.</div>
-    </div>
-    <div class="coverage-card">
-      <div class="cov-icon">&#9632;</div>
-      <div class="cov-name">Kary Regulacyjne NIS2</div>
-      <div class="cov-text">Koszty obrony i część kar nakładanych przez UODO, KNF lub unijnych regulatorów NIS2 / DORA.</div>
-    </div>
+    <div class="cov-card"><div class="cov-n">01</div><div class="cov-name">Ransomware &amp; Wymuszenia</div><div class="cov-txt">Pokrycie okupu, koszty negocjatora kryzysowego, pełne przywrócenie systemów i danych po ataku szyfrującym.</div></div>
+    <div class="cov-card"><div class="cov-n">02</div><div class="cov-name">Odpowiedzialność za Dane</div><div class="cov-txt">Ochrona prawna i odszkodowawcza po wycieku danych osobowych klientów lub pracowników. RODO-ready.</div></div>
+    <div class="cov-card"><div class="cov-n">03</div><div class="cov-name">Przerwa w Działalności</div><div class="cov-txt">Utracony zysk i koszty stałe gdy systemy nie działają — od pierwszej godziny przestoju operacyjnego.</div></div>
+    <div class="cov-card"><div class="cov-n">04</div><div class="cov-name">Reagowanie na Incydent</div><div class="cov-txt">24/7 dostęp do zespołu forensic, PR kryzysowy, obsługa prawna i powiadamianie ofiar wycieku danych.</div></div>
+    <div class="cov-card"><div class="cov-n">05</div><div class="cov-name">Cyberprzestępczość Finansowa</div><div class="cov-txt">Phishing CEO, przelewy na fałszywe rachunki, manipulacja fakturami — straty bezpośrednie pokryte.</div></div>
+    <div class="cov-card"><div class="cov-n">06</div><div class="cov-name">Kary Regulacyjne NIS2</div><div class="cov-txt">Koszty obrony i część kar nakładanych przez UODO, KNF lub unijnych regulatorów NIS2 / DORA.</div></div>
   </div>
 </section>
 
 <!-- THREATS -->
 <section id="threats-section">
-  <div class="threats-inner">
-    <div class="threats-left">
+  <div class="thr-inner">
+    <div class="thr-left">
       <p class="section-label">WEKTORY ATAKU</p>
-      <h2 class="section-title">Twój cyfrowy<br>obwód jest<br>pod obserwacją.</h2>
-      <p class="threats-copy">Hakerzy nie szukają dużych firm. Szukają niezabezpieczonych. Małe i średnie przedsiębiorstwa stanowią 43% celów — bo wdrażają mniej zabezpieczeń, a dysponują realnym kapitałem i wrażliwymi danymi.</p>
-      <p class="threats-copy">Polisa cyber przenosi finansowy ciężar incydentu z twojego bilansu na ubezpieczyciela — i dostarcza ekspertów wtedy, gdy czas ma znaczenie krytyczne.</p>
+      <h2 class="section-title">Twój cyfrowy obwód<br>jest pod obserwacją.</h2>
+      <p class="thr-copy">Hakerzy nie szukają dużych firm — szukają niezabezpieczonych. MŚP stanowią 43% celów, bo wdrażają mniej zabezpieczeń, a mają dostęp do realnych środków i danych klientów.</p>
+      <p class="thr-copy">Polisa cyber przenosi finansowy ciężar incydentu z twojego bilansu na ubezpieczyciela — i dostarcza ekspertów gdy czas ma znaczenie krytyczne.</p>
     </div>
-    <div class="threats-right">
-      <div class="threat-item"><span class="t-num">01</span><div><div class="t-title">Phishing i spear-phishing</div><div class="t-desc">90% naruszeń zaczyna się od wiadomości e-mail. Ataki celowane w konkretne osoby w firmie.</div></div></div>
-      <div class="threat-item"><span class="t-num">02</span><div><div class="t-title">Ransomware</div><div class="t-desc">Szyfrowanie danych i żądanie okupu — średnio 3 tygodnie przestoju bez sprawnego backupu.</div></div></div>
-      <div class="threat-item"><span class="t-num">03</span><div><div class="t-title">Ataki na łańcuch dostaw</div><div class="t-desc">Kompromitacja dostawcy oprogramowania — jeden atak uderza w setki firm jednocześnie.</div></div></div>
-      <div class="threat-item"><span class="t-num">04</span><div><div class="t-title">Business Email Compromise</div><div class="t-desc">Podszywanie się pod prezesa lub CFO — zlecenia przelewów na konta przestępców.</div></div></div>
-      <div class="threat-item"><span class="t-num">05</span><div><div class="t-title">Naruszenie danych / insider</div><div class="t-desc">Wycieki przez pracowników — celowe lub przez zaniedbanie. RODO: do 20M EUR kary.</div></div></div>
+    <div class="thr-right">
+      <div class="thr-item"><span class="ti-n">01</span><div><div class="ti-t">Phishing i spear-phishing</div><div class="ti-d">90% naruszeń zaczyna się od wiadomości e-mail. Ataki celowane w konkretne osoby w firmie.</div></div></div>
+      <div class="thr-item"><span class="ti-n">02</span><div><div class="ti-t">Ransomware</div><div class="ti-d">Szyfrowanie danych i żądanie okupu — średnio 3 tygodnie przestoju bez sprawnego backupu.</div></div></div>
+      <div class="thr-item"><span class="ti-n">03</span><div><div class="ti-t">Ataki na łańcuch dostaw</div><div class="ti-d">Kompromitacja dostawcy oprogramowania — jeden atak uderza w setki firm jednocześnie.</div></div></div>
+      <div class="thr-item"><span class="ti-n">04</span><div><div class="ti-t">Business Email Compromise</div><div class="ti-d">Podszywanie się pod prezesa lub CFO — zlecenia przelewów na konta przestępców.</div></div></div>
+      <div class="thr-item"><span class="ti-n">05</span><div><div class="ti-t">Naruszenie danych / insider</div><div class="ti-d">Wycieki przez pracowników — celowe lub przez zaniedbanie. RODO: do 20M EUR kary.</div></div></div>
     </div>
   </div>
 </section>
@@ -230,39 +203,39 @@
 <section id="process-section" class="section">
   <p class="section-label">JAK DZIAŁAMY</p>
   <h2 class="section-title" style="margin-bottom:3rem">Od kontaktu do ochrony: 4 kroki.</h2>
-  <div class="process-grid">
-    <div class="process-step"><div class="step-marker"></div><div class="step-bg-num">01</div><div class="step-title">Analiza Ryzyka</div><div class="step-desc">Mapujemy twoje systemy, dane i ekspozycję. Identyfikujemy luki, które polisa musi pokryć.</div></div>
-    <div class="process-step"><div class="step-marker"></div><div class="step-bg-num">02</div><div class="step-title">Dobór Pokrycia</div><div class="step-desc">Na rynku Lloyd's i polskim dobieramy program dopasowany do branży, skali i budżetu klienta.</div></div>
-    <div class="process-step"><div class="step-marker"></div><div class="step-bg-num">03</div><div class="step-title">Wdrożenie Polisy</div><div class="step-desc">Negocjujemy warunki, weryfikujemy klauzule wyłączeń i finalizujemy kontrakt ubezpieczeniowy.</div></div>
-    <div class="process-step last"><div class="step-marker"></div><div class="step-bg-num">04</div><div class="step-title">Wsparcie 24/7</div><div class="step-desc">Jesteśmy z tobą w momencie incydentu — od zgłoszenia po zamknięcie szkody i wypłatę.</div></div>
+  <div class="proc-grid">
+    <div class="proc-step"><div class="ps-bg">01</div><div class="ps-dot"></div><div class="ps-t">Analiza Ryzyka</div><div class="ps-d">Mapujemy systemy, dane i ekspozycję. Identyfikujemy luki, które polisa musi pokryć.</div></div>
+    <div class="proc-step"><div class="ps-bg">02</div><div class="ps-dot"></div><div class="ps-t">Dobór Pokrycia</div><div class="ps-d">Na rynku Lloyd's i polskim dobieramy program dopasowany do branży, skali i budżetu.</div></div>
+    <div class="proc-step"><div class="ps-bg">03</div><div class="ps-dot"></div><div class="ps-t">Wdrożenie Polisy</div><div class="ps-d">Negocjujemy warunki, weryfikujemy klauzule wyłączeń i finalizujemy kontrakt.</div></div>
+    <div class="proc-step last"><div class="ps-bg">04</div><div class="ps-dot"></div><div class="ps-t">Wsparcie 24/7</div><div class="ps-d">Jesteśmy z tobą w momencie incydentu — od zgłoszenia po zamknięcie szkody i wypłatę.</div></div>
   </div>
 </section>
 
 <!-- PARTNERS -->
 <div id="partner-strip">
-  <span class="partner-label">WSPARCIE UNDERWRITINGOWE I AKREDYTACJE</span>
-  <div class="partner-badge"><div class="pb-name accent">CFC Underwriting</div><div class="pb-sub">LLOYD'S OF LONDON SYNDICATE</div></div>
-  <div class="partner-badge"><div class="pb-name">KNF</div><div class="pb-sub">LICENCJA OD 2013</div></div>
-  <div class="partner-badge"><div class="pb-name">NIS2 / DORA</div><div class="pb-sub">COMPLIANCE READY</div></div>
-  <div class="partner-badge"><div class="pb-name">RODO / UODO</div><div class="pb-sub">DATA PROTECTION</div></div>
+  <span class="part-label">WSPARCIE UNDERWRITINGOWE I AKREDYTACJE</span>
+  <div class="part-badge"><div class="pb-n accent">CFC Underwriting</div><div class="pb-s">LLOYD'S OF LONDON SYNDICATE</div></div>
+  <div class="part-badge"><div class="pb-n">KNF</div><div class="pb-s">LICENCJA OD 2013</div></div>
+  <div class="part-badge"><div class="pb-n">NIS2 / DORA</div><div class="pb-s">COMPLIANCE READY</div></div>
+  <div class="part-badge"><div class="pb-n">RODO / UODO</div><div class="pb-s">DATA PROTECTION</div></div>
 </div>
 
 <!-- CTA -->
 <section id="cta-section">
-  <div class="cta-glow"></div>
-  <h2 class="cta-title">Twoja firma zasługuje<br>na ochronę <span class="accent">zanim<br>będzie za późno.</span></h2>
+  <h2 class="cta-title">Twoja firma zasługuje na ochronę<br><span class="accent">zanim będzie za późno.</span></h2>
   <p class="cta-sub">Bezpłatna analiza ryzyka cyber. Bez zobowiązań. Odpowiadamy w 24h.</p>
-  <div class="cta-actions">
-    <input type="email" class="cta-input" placeholder="twoj@email.pl" id="cta-email" />
+  <div class="cta-row">
+    <input type="email" class="cta-input" placeholder="twoj@email.pl" id="cta-email">
     <button class="btn-primary" onclick="handleCTA()">Chcę darmową analizę →</button>
   </div>
-  <div class="cta-meta">AURA CONSULTING SP. Z O.O. · BROKER UBEZPIECZENIOWY · KNF · auraconsulting.pl</div>
+  <p class="cta-meta">AURA CONSULTING SP. Z O.O. · BROKER UBEZPIECZENIOWY · KNF · auraconsulting.pl</p>
 </section>
 
+<!-- FOOTER -->
 <footer id="main-footer">
-  <div class="footer-brand">AURA<span class="accent">.</span>CONSULTING</div>
-  <div class="footer-meta">© 2025 Aura Consulting Sp. z o.o. · Wszelkie prawa zastrzeżone · auraconsulting.pl</div>
-  <div class="footer-knf">KNF LICENCJA 2013</div>
+  <div class="foot-brand">AURA<span class="dot">.</span>CONSULTING</div>
+  <div class="foot-meta">© 2025 Aura Consulting Sp. z o.o. · Wszelkie prawa zastrzeżone</div>
+  <div class="foot-knf">KNF LICENCJA 2013</div>
 </footer>
 
 <script src="app.js"></script>
