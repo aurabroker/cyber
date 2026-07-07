@@ -638,6 +638,16 @@ export function createHeroScene(container) {
 	}
 	window.addEventListener('pointermove', onPointerMove, { passive: true });
 
+	/* ── postęp przewijania hero (0 = góra, 1 = hero przewinięte) ── */
+	let scrollTarget = 0;
+	let scrollSmooth = 0;
+	function onScroll() {
+		const h = container.clientHeight || window.innerHeight;
+		scrollTarget = Math.min(1, Math.max(0, window.scrollY / h));
+	}
+	window.addEventListener('scroll', onScroll, { passive: true });
+	onScroll();
+
 	/* ── pętla animacji ── */
 	const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 	const clock = new THREE.Clock();
@@ -652,9 +662,13 @@ export function createHeroScene(container) {
 		const dt = Math.min(clock.getDelta(), 0.05);
 		t += dt;
 
-		/* tarcza — unoszenie */
-		shieldGroup.position.y = 0.42 + 0.11 * Math.sin(t * 0.9);
-		shieldGroup.rotation.y = 0.05 * Math.sin(t * 0.45);
+		/* postęp scrolla — wygładzony */
+		scrollSmooth += (scrollTarget - scrollSmooth) * 0.08;
+
+		/* tarcza — unoszenie + reakcja na scroll (obrót, kurczenie, lekki wznos) */
+		shieldGroup.position.y = 0.42 + 0.11 * Math.sin(t * 0.9) + scrollSmooth * 0.9;
+		shieldGroup.rotation.y = 0.05 * Math.sin(t * 0.45) + scrollSmooth * Math.PI * 1.15;
+		shieldGroup.scale.setScalar(1 - scrollSmooth * 0.32);
 
 		/* orbity */
 		orbit1.rotation.z += dt * 0.4;
@@ -712,10 +726,17 @@ export function createHeroScene(container) {
 			shieldTex.flicker();
 		}
 
-		/* kamera — paralaks + dryf */
+		/* scena — delikatny obrót całości przy scrollu */
+		stage.rotation.y = scrollSmooth * 0.22;
+
+		/* kamera — paralaks + dryf + odjazd/uniesienie ze scrollem */
 		camOffset.x += (mouse.x * 0.55 + 0.12 * Math.sin(t * 0.2) - camOffset.x) * 0.04;
 		camOffset.y += (-mouse.y * 0.35 + 0.06 * Math.sin(t * 0.16) - camOffset.y) * 0.04;
-		camera.position.set(camBase.x + camOffset.x, camBase.y + camOffset.y, camBase.z);
+		camera.position.set(
+			camBase.x + camOffset.x,
+			camBase.y + camOffset.y + scrollSmooth * 1.2,
+			camBase.z + scrollSmooth * 3.6
+		);
 		camera.lookAt(lookTarget);
 
 		composer.render();
@@ -752,6 +773,7 @@ export function createHeroScene(container) {
 		io.disconnect();
 		ro.disconnect();
 		window.removeEventListener('pointermove', onPointerMove);
+		window.removeEventListener('scroll', onScroll);
 		for (const d of disposables) d.dispose?.();
 		composer.dispose();
 		renderer.dispose();
