@@ -5,6 +5,7 @@
 	import Stats from '$lib/components/Stats.svelte';
 	import Coverage from '$lib/components/Coverage.svelte';
 	import Threats from '$lib/components/Threats.svelte';
+	import AttackSimulator from '$lib/components/AttackSimulator.svelte';
 	import Process from '$lib/components/Process.svelte';
 	import Partners from '$lib/components/Partners.svelte';
 	import Cta from '$lib/components/Cta.svelte';
@@ -21,6 +22,7 @@
 <Stats />
 <Coverage />
 <Threats />
+<AttackSimulator />
 <Process />
 <Partners />
 <Cta />

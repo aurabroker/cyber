@@ -3,6 +3,7 @@
 	<div class="nav-links">
 		<a href="#coverage">Zakres ochrony</a>
 		<a href="#threats-section">Zagrożenia</a>
+		<a href="#sim-section">Symulator</a>
 		<a href="#process-section">Jak działamy</a>
 	</div>
 	<a class="nav-cta" href="#cta-section">Wycena polisy →</a>
